@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+from torchsummary import summary
 
 
 class BasicBlock(nn.Module):
@@ -120,5 +121,8 @@ def test():
     net = ResNet18()
     y = net(torch.randn(1, 3, 32, 32))
     print(y.size())
+    
+def model_summary(model, input_size):
+    print(summary(model, input_size=input_size))
 
 # test()
